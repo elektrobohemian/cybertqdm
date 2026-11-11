@@ -1,6 +1,6 @@
 # cybertqdm
 
-`cybertqdm` is a wrapper around [`tqdm`](https://pypi.org/project/tqdm/) that will also display on an external e-ink display connected via USB.
+`cybertqdm` is a wrapper around [`tqdm`](https://pypi.org/project/tqdm/) that will also display a progress bar on an external e-ink display connected via USB.
 
 It is called `cybertqdm` because it turns `tqdm` into a _cyber-physical system_ (Yes, that's an existing term, see the [Wikipedia](https://en.wikipedia.org/wiki/Cyber-physical_system)). It will show a process bar as illustrated below.
 
@@ -21,6 +21,22 @@ for _ in cybertqdm(range(60), desc="Loosing faith in humanity...", epaper_interv
 Please note that the e-ink display will not update as fast as the `tqdm` console output. The refresh interval is controlled by `epaper_interval` (in seconds).
 
 If no e-ink display is available while using `cybertqdm`, a warning is displayed and normal `tqdm` operation is unaffected.
+
+### Replacing `tqdm` with `cybertqdm`
+
+If you have code that uses `tqdm`, you might what to use `cybertqdm` as an optional drop-in replacement, i.e., `cybertqdm` will only be used if it is present in your environment without adding it as a explicit requirement, e.g. using `uv add cybertqdm` or `pip install cybertqdm`.
+
+To use `cybertqdm` optionally, add the following code to the import block of your script:
+```python
+# try to load cybertqdm if it is available
+try:
+    from cybertqdm import cybertqdm as tqdm
+
+    print("Using cybertqdm to display progress on external e-ink display.")
+except ImportError:
+    from tqdm import tqdm
+
+```
 
 ## Installation
 
