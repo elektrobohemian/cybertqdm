@@ -1,6 +1,6 @@
 [project]
 name = "cybertqdm"
-version = "0.2.7"
+version = "0.2.8"
 description = "A wrapper around tqdm that displays progress on an e-ink display connected over USB"
 keywords = ["tqdm", "progress bar", "e-ink", "e-paper", "raspberry pi pico", "micropython"]
 classifiers = [
