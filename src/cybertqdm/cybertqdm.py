@@ -31,12 +31,14 @@ class CyberTqdm(tqdm):
     _ser = None  # common connection for progress bars
     _unavailable = False  # in case of errors do not try to reconnect again and again...
 
-    def __init__(self, *args, port=None, epaper_interval=30, **kwargs):
+    def __init__(
+        self, *args, desc="Working...", port=None, epaper_interval=30, **kwargs
+    ):
         self._epaper_interval = epaper_interval
         self._last_send = 0.0
         self._epaper_done = False
         self._open_port(port)
-        super().__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs, desc=desc)
 
     # --- connection ---------------------------------------------------------
     @staticmethod
@@ -111,10 +113,18 @@ class CyberTqdm(tqdm):
 
 def cybertqdm(*args, **kwargs):
     """Shortcut for CyberTqdm(range(*args), **kwargs)."""
-    return CyberTqdm(range(*args), **kwargs)
+    # return CyberTqdm(range(*args), **kwargs)
+    return CyberTqdm(*args, **kwargs)
 
 
 if __name__ == "__main__":
     # quick test: 60 steps, each sleeping for 0.5 seconds, e-ink display update every 10 seconds
-    for _ in cybertqdm(60, desc="Loosing faith in humanity...", epaper_interval=10):
-        time.sleep(0.5)
+    for _ in cybertqdm(
+        range(60), desc="Loosing faith in humanity...", epaper_interval=10
+    ):
+        time.sleep(0.25)
+
+    # test with other data structures and a missing description
+    data = {"PPN1036449815", "PPN1012160157", "PPN675937671", "PPN1042331863"}
+    for d in cybertqdm(data):
+        print(d)

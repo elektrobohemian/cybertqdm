@@ -14,7 +14,7 @@ As `cybertqdm` wraps [`tqdm`](https://pypi.org/project/tqdm/) it works exactly t
 from cybertqdm import cybertqdm
 import time
 
-for _ in cybertqdm(60, desc="Loosing faith in humanity...", epaper_interval=10):
+for _ in cybertqdm(range(60), desc="Loosing faith in humanity...", epaper_interval=10):
         time.sleep(0.5)
 ```
 
