@@ -1,0 +1,30 @@
+[project]
+name = "cybertqdm"
+version = "0.2.1"
+description = "A wrapper around tqdm that displays progress on an e-ink display connected over USB"
+keywords = ["tqdm", "progress bar", "e-ink", "e-paper", "raspberry pi pico", "micropython"]
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "David Zellhöfer", email = "david.zellhoefer@hwr-berlin.de" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "mpremote>=1.29.0",
+    "pyserial>=3.5",
+    "tqdm>=4.70.1",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+source-exclude = ["patch_publish.sh","test_release.sh"]   # the build script shouldn't be included but we exclude it explicitly
+
+[[tool.uv.index]]
+name = "cybertqdm"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
