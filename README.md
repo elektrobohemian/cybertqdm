@@ -40,7 +40,13 @@ except ImportError:
 
 ## Installation
 
-In contrast to most other PyPi packages, `cybertqdm` is a _cyber-physical system_. Thus, you will have to satisfy certain hardware requirements and software requirements on your embedded device. 
+In contrast to most other PyPi packages, `cybertqdm` is a _cyber-physical system_. Thus, you will have to satisfy certain hardware requirements and software requirements on your embedded device (see below).
+
+`cybertqdm` is available at [PyPi](https://pypi.org/project/cybertqdm/) and can be installed with:
+
+`uv add cybertqdm` or `pip install cybertqdm`
+
+The package also includes all files needed to set up the e-ink device. 
 
 ### Operating System Requirements
 
@@ -70,6 +76,8 @@ The current version of `cybertqdm` requires the following components:
 2. One [Waveshare e-paper 2.13 inch display module](https://www.waveshare.com/wiki/Pico-ePaper-2.13) (250×122 pixels, black and white)
 3. One USB-Micro to whatever-you-need-USB __data__ cable
 
+If you use a Pico 2 with a presoldered header, no soldering is needed as the Waveshare e-ink display directly connects to the Pico 2.
+
 ### Hardware Setup
 
 You only have to follow these steps once if you don't change your Pico 2 setup afterwards. If you reconnect your Pico 2 it will work directly – on every computer that has `cybertqdm` installed.
@@ -88,11 +96,15 @@ You only have to follow these steps once if you don't change your Pico 2 setup a
     ```
    - The result should look similar to this sample output (assuming you are using [uv](https://github.com/astral-sh/uv) as a package manager):
     ```python
-        cybertqdm version: 0.1.x
+        cybertqdm version: 0.2.x
         The following files need to be copied to the device:
             .../.cache/uv/archive-v0/xQJrc_fVJrWXacY9/lib/python3.15/site-packages/cybertqdm/device/epd.py 
             .../.cache/uv/archive-v0/xQJrc_fVJrWXacY9/lib/python3.15/site-packages/cybertqdm/device/main.py
     ```
+    - Alternatively, you can download the files from Github:
+      - [epd.py](https://raw.githubusercontent.com/elektrobohemian/cybertqdm/refs/heads/main/src/cybertqdm/device/epd.py)
+      - [main.py](https://raw.githubusercontent.com/elektrobohemian/cybertqdm/refs/heads/main/src/cybertqdm/device/main.py)
+
     - Now copy the files to your Pico 2 using `mpremote` using the paths shown above:
     ```
         mpremote cp <your_path>main.py :main.py
