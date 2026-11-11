@@ -125,6 +125,6 @@ if __name__ == "__main__":
         time.sleep(0.25)
 
     # test with other data structures and a missing description
-    data = {"PPN1036449815", "PPN1012160157", "PPN675937671", "PPN1042331863"}
+    data = {"a", "b", "c", "d"}
     for d in cybertqdm(data):
         print(d)
