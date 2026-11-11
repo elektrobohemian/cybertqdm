@@ -1,6 +1,6 @@
 [project]
 name = "cybertqdm"
-version = "0.2.1"
+version = "0.2.2"
 description = "A wrapper around tqdm that displays progress on an e-ink display connected over USB"
 keywords = ["tqdm", "progress bar", "e-ink", "e-paper", "raspberry pi pico", "micropython"]
 readme = "README.md"
@@ -15,6 +15,10 @@ dependencies = [
     "pyserial>=3.5",
     "tqdm>=4.70.1",
 ]
+
+[project.urls]
+Homepage = "https://github.com/elektrobohemian/cybertqdm"
+Issues = "https://github.com/elektrobohemian/cybertqdm/issues"
 
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]
