@@ -1,8 +1,12 @@
 [project]
 name = "cybertqdm"
-version = "0.2.2"
+version = "0.2.3"
 description = "A wrapper around tqdm that displays progress on an e-ink display connected over USB"
 keywords = ["tqdm", "progress bar", "e-ink", "e-paper", "raspberry pi pico", "micropython"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 readme = "README.md"
 license = "MIT"
 license-files = ["LICENSE"]
